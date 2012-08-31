@@ -1,0 +1,22 @@
+{
+  "name": "Caption",
+  "version": "0.0.1",
+  "private": true,
+  "author": "flsg <chenglou92@gmail.com>",
+  "description": "Experimental app built with Express.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flsg/Caption.git"
+  },
+  "dependencies" : {
+    "express": "3.0.0rc3",
+    "jade": "0.27.x",
+    "stylus": "0.29.x",
+    "mongoose": "3.1.x"
+  },
+  "devDependencies": {
+  },
+  "engines": {
+    "node": "0.8.x"
+  }
+}
