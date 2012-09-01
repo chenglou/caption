@@ -1,5 +1,5 @@
 module.exports = (app)->
-	
-	app.get(/^\/\d+\/?$/, (req, res)->
+	# 
+	app.get(, (req, res)->
 		res.render('index', { title: 'Express' });
 	)
