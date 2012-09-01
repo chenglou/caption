@@ -1,14 +1,15 @@
 express = require('express')
-routes = require('./routes')
 http = require('http')
-# path used for path.join() below
-path = require('path')
+# path no longer used for path.join() in config.setup()
+# path = require('path')
 # custom imports
 config = require('./config')
+routes = require('./routes')
+
 app = express()
 
 # middleware configs. Took the environment into consideration
-config.setup(app, express, path)
+config.setup(app, express)
 
 # start the routing
 routes(app)
