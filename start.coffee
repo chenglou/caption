@@ -1,5 +1,6 @@
 express = require('express')
 http = require('http')
+mongoose = require('mongoose')
 # path no longer used for path.join() in config.setup()
 # path = require('path')
 # custom imports
@@ -16,4 +17,9 @@ routes(app)
 
 app.listen(app.get('port'), ->
 	console.log 'Express server running'
+)
+
+mongoose.connect(config.db.url, (err)->
+	throw err if err
+	console.log 'mongo running'
 )

@@ -1,4 +1,4 @@
-# TODO might separate the objs into their own files in the future
+# TODO: might separate the objs into their own files in the future
 
 exports.image =
 	view: /^\/(\d+)\/?$/ # /4
