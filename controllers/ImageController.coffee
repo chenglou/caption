@@ -2,15 +2,16 @@ Image = require('../models').Image
 
 # displays a list of the Images
 exports.index = (req, res)->
-	# find newest 	
+	# find newest
 	Image
 	.find()
 	.sort({createdAt: 'descending'})
 	.limit(10)
 	.exec((err, results)->
+		# TODO: better error handling
 		throw err if err
-		console.log results
-		res.render('caption/index', { title: 'Express' });
+		res.json results
+		res.render('image/index', { title: 'Express' });
 	)
 
 exports.view = (req, res)->
@@ -21,7 +22,7 @@ exports.view = (req, res)->
 		throw err if err
 		console.log 'saved!'
 	)
-	res.render('caption/index', { title: 'Express' });
+	res.render('image/index', { title: 'Express' });
 
 
 module.exports = exports
