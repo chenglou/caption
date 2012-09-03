@@ -1,12 +1,12 @@
 # TODO: might separate the objs into their own files in the future
 
 exports.image =
+	index: '/'
 	view: /^\/(\d+)\/?$/ # /4
 	create: '/new'
 	delete: /^\/(\d+)\/delete\/?$/ # /4/delete
 
 exports.caption = 
-	index: '/'
 	view: /^\/(\d+)\/(\d+)\/?$/ # /4/10
 	create: /^\/(\d+)\/new\/?$/ # /4/new
 	update: /^\/(\d+)\/edit\/?$/ # /4/edit
