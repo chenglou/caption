@@ -1,8 +1,6 @@
-# NOTE: doesn't require index
-Caption = require('../models/Image')
+Caption = require('../models').Caption
 
-# displays a list of the captions
-exports.index = (req, res)->
+exports.view = (req, res)->
 	test = new Caption(
 		extension: '.jpg'
 	)
@@ -11,12 +9,6 @@ exports.index = (req, res)->
 		console.log 'saved!'
 	)
 	res.render('caption/index', { title: 'Express' });
-
-exports.view = (req, res)->
-	Caption.find({}, (err, results) ->
-		console.log err, results
-		res.render('caption/index', { title: 'Express' });
-	)
 
 
 module.exports = exports
