@@ -1,6 +1,5 @@
 # routes are shared between server and client. Would directly be here otherwise
-# NOTE doesn't require index
-r = require('../shared/routes')
+r = require('../shared').routes
 c = require('../controllers')
 
 # handy shortcuts
@@ -13,5 +12,5 @@ UserController = c.UserController
 ImageController = c.ImageController
 
 module.exports = (app)->
-	app.get caption.index, CaptionController.index
+	app.get image.index, ImageController.index
 	app.get caption.view, CaptionController.view
