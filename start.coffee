@@ -1,8 +1,6 @@
 express = require('express')
 http = require('http')
 mongoose = require('mongoose')
-# path no longer used for path.join() in config.setup()
-# path = require('path')
 # custom imports
 config = require('./config')
 routes = require('./routes')
