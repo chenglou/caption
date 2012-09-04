@@ -5,7 +5,7 @@ imageSchema = new Schema(
 	createdAt: 
 		type: Date
 		default: Date.now
-	extension: String
+	name: String
 	# TODO: optionally link it to the user
 )
 Image = mongoose.model('Image', imageSchema)
