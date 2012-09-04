@@ -35,7 +35,7 @@ devSetup = (app, express)->
 	app.use express.errorHandler()
 	# compile styl into css
 	app.use(stylus.middleware(
-		src: __dirname + '/client-src'
+		src: __dirname + '/client_src'
 		dest: staticPath
 		compile: (str, path)-> stylus(str).set('filename', path)
 	))
@@ -47,7 +47,7 @@ prodSetup = (app, express)->
 	app.use express.logger()
 	# compile styl into css. Compress
 	app.use(stylus.middleware(
-		src: __dirname + '/client-src'
+		src: __dirname + '/client_src'
 		dest: staticPath
 		compile: (str, path)-> stylus(str).set('filename', path).set('compress', true)
 	))
@@ -59,6 +59,8 @@ dev =
 	imageRepo:
 		# absolute path. Don't use this for client-side-related paths
 		url: __dirname + '/client/images'
+		# somewhere private
+		tempUrl: __dirname + '/_uploaded_images'
 	port: 80
 	setup: devSetup
 
@@ -67,6 +69,7 @@ prod =
 		url: 'mongodb://amazon' # TODO: replace with actual prod url
 	imageRepo:
 		url: 'client/images' # TODO: replace with actual prod url
+		tempUrl: __dirname + '/_uploaded_images'
 	port: 80
 	setup: prodSetup
 
