@@ -12,7 +12,20 @@ commonSetup = (app, express)->
 	app.use express.bodyParser()
 	app.use express.methodOverride()
 	app.use express.errorHandler()
+	# app.use express.session()
+	# app.use express.cookieParser()
+	# app.use express.csrf()	
 	app.use app.router
+	# error page. Comes last
+	# the form (err, req, res, next) is only picked up by next(something). General 404 not picked
+	app.use (req, res, next)->
+		if req.accepts 'html'
+			res.status 404
+			res.render '404'
+			return
+		if req.accepts 'json'
+    		res.send { error: '400' }
+    		return
 
 devSetup = (app, express)->
 	app.set 'env', 'development'
@@ -43,16 +56,17 @@ prodSetup = (app, express)->
 dev =
 	db:
 		url: 'mongodb://localhost:27017/mongodb'
-	image:
-		url: '/images'
+	imageRepo:
+		# absolute path. Don't use this for client-side-related paths
+		url: __dirname + '/client/images'
 	port: 80
 	setup: devSetup
 
 prod =
 	db:
 		url: 'mongodb://amazon' # TODO: replace with actual prod url
-	image:
-		url: '/images' # TODO: replace with actual prod url
+	imageRepo:
+		url: 'client/images' # TODO: replace with actual prod url
 	port: 80
 	setup: prodSetup
 
