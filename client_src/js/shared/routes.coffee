@@ -19,7 +19,8 @@ exports.api =
 	image:
 		index: '/api/image/index' # returns list of images, etc.
 		view:  /^\/api\/image\/(\d+)\/?$/ # /api/image/4
-		create: '/api/image/create' # upload
+		create: '/api/image/create' # temp upload
+		saveUpload: '/api/image/saveUpload' # temp upload
 		delete: /^\/api\/image\/(\d+)\/delete\/?$/ # /api/image/4/delete
 
 	caption:

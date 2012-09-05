@@ -21,7 +21,7 @@ requirejs.config
 
 window.location.path
 requirejs ['backbone'
-'views/caption/CaptionView',
+'views/caption/CaptionView'
 'jquery'
 ],
 (Backbone, Handlebars, CaptionView)->

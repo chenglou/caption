@@ -6,3 +6,12 @@ username / pass:
 
 don't allow:
 /[`<>(){}[]]"':/
+###
+
+exports.imageUpload =
+	types: ['image/jpeg'
+			'image/png'
+			'image/bmp'
+			'image/tiff'
+			]
+	# upload size is already set in config
