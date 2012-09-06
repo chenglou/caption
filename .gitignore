@@ -1,3 +1,9 @@
 node_modules/
 mongodb/
-client/
+uploaded_images/
+
+!client/
+client/*
+!client/js/
+client/js/*
+!client/js/libs/
