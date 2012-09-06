@@ -1,3 +1,5 @@
+# this validation script acts as a config, with no logic of its own for maximum compatibility
+
 ###
 to be filled later
 
@@ -7,11 +9,11 @@ username / pass:
 don't allow:
 /[`<>(){}[]]"':/
 ###
-
 exports.imageUpload =
-	types: ['image/jpeg'
+	mimeTypes: ['image/jpeg'
 			'image/png'
 			'image/bmp'
 			'image/tiff'
 			]
-	# upload size is already set in config
+	# upload size is temporarily set in config
+	size: '1mb'
