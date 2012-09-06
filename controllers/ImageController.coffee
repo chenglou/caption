@@ -1,7 +1,7 @@
-Image = require('../models').Image
+Image = require('../models/Image')
 config = require('../config')
 fs = require('fs')
-validations = require('../client/js/shared').validations
+validations = require '../client/js/shared/validations'
 
 # handles the index route even though image.index doesn't exist in shared/routes
 exports.index = (req, res, next)->

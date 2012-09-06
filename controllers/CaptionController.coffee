@@ -1,4 +1,4 @@
-Caption = require('../models').Caption
+Caption = require('../models/Caption')
 
 exports.view = (req, res)->
 	test = new Caption(
