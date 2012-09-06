@@ -15,6 +15,7 @@ errorHandler404 = ()->
 
 errorHandler = ()->
 		return (err, req, res, next)->
+			console.log err
 			if req.accepts 'html'
 				res.status 404
 				res.render '404'
@@ -24,10 +25,6 @@ errorHandler = ()->
 				res.send { error: '400' }
 				res.end
 				return
-
-validateUploadTypes = ()->
-	return (req, res, next)->
-
 
 devSetup = (app, express)->
 	app.set 'env', 'development'
@@ -43,12 +40,14 @@ devSetup = (app, express)->
 		compile: (str, path)-> stylus(str).set('filename', path)
 	))
 	app.use(express.static(dev.staticPath))
+	app.use express.favicon()
+	### TODO: migrate this inside a function, as specified by Trello card
 	app.use express.limit '1mb'
 	app.use express.bodyParser
 		uploadDir: dev.imageRepo.tempUrl
 		keepExtensions: true
+	###
 	app.use express.compress()
-	app.use express.favicon()
 	app.use express.methodOverride()
 	# app.use express.session()
 	# app.use express.cookieParser()
@@ -83,11 +82,13 @@ prodSetup = (app, express)->
 		compile: (str, path)-> stylus(str).set('filename', path).set('compress', true)
 	))
 	app.use(express.static(prod.staticPath))
+	app.use express.favicon()
+	###
 	app.use express.bodyParser
 		uploadDir: prod.imageRepo.tempUrl
 		keepExtensions: true
+	###
 	app.use express.compress()
-	app.use express.favicon()
 	app.use express.methodOverride()
 	# app.use express.session()
 	# app.use express.cookieParser()
@@ -117,6 +118,7 @@ dev =
 		# somewhere private
 		tempUrl: __dirname + '/uploaded_images'
 	port: 80
+	defaultUploadSize: '1mb'
 	setup: devSetup
 
 prod =
@@ -127,6 +129,7 @@ prod =
 		url: 'client/images' # TODO: replace with actual prod url
 		tempUrl: __dirname + '/uploaded_images'
 	port: 80
+	defaultUploadSize: '1mb'
 	setup: prodSetup
 
 module.exports = dev
